@@ -1,0 +1,6 @@
+.videos-list {
+    @apply m-auto mt-6 flex flex-wrap justify-center max-w-7xl
+}
+.video-container {
+    @apply w-1/4
+}
