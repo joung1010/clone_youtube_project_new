@@ -1,5 +1,5 @@
 .navbar {
-    @apply flex text-white max-w-4xl m-auto mt-3
+    @apply flex text-white max-w-7xl m-auto mt-3
 }
 
 .nav-logo {
