@@ -1,0 +1,27 @@
+.video {
+    @apply text-white
+}
+.video-item {
+    @apply h-1/4
+}
+.video-title {
+  @apply text-base
+}
+.video-channel,.video-upload {
+    @apply text-sm
+}
+
+@media (max-width: 1024px) {
+    .video {
+        @apply text-center
+    }
+    .video-item {
+        @apply w-10/12 m-auto h-72
+    }
+    .video-title {
+        @apply text-lg
+    }
+    .video-channel,.video-upload {
+        @apply text-base
+    }
+}

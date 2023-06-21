@@ -2,5 +2,14 @@
     @apply m-auto mt-6 flex flex-wrap justify-center max-w-7xl
 }
 .video-container {
-    @apply w-1/4
+    @apply w-1/4 mb-2
+}
+
+@media (max-width: 1024px) {
+    .videos-list {
+        @apply flex-col items-center
+    }
+    .video-container {
+        @apply w-full
+    }
 }
