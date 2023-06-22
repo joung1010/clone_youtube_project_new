@@ -2,7 +2,7 @@
     @apply text-white
 }
 .video-img {
-    @apply h-1/4 w-full m-0
+    @apply h-40 w-full m-0
 }
 .video-title {
   @apply text-base

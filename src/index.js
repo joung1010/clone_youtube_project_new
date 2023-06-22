@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {YoutubeUtil} from './service/youtubeUtil'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const youtubeAPI = new YoutubeUtil();
+
 root.render(
   <React.StrictMode>
-    <App />
+    <App youtubeAPI={youtubeAPI}/>
   </React.StrictMode>
 );
 

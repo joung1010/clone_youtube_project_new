@@ -6,19 +6,14 @@ import './nav.css'
 
 function Nav({ onHandleChange}) {
     const [words, setWords] = useState('');
-    const updateVideos = (videos) => {
-        onHandleChange(videos);
+    const updateVideos = (words) => {
+        onHandleChange(words);
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-        };
-        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${words}&key=${process.env.REACT_APP_YOUTUBE_KEY}`, requestOptions)
-            .then(response => response.json())
-            .then(res => updateVideos(res.items));
+        updateVideos(words);
+        e.target.reset();
     };
 
     return (

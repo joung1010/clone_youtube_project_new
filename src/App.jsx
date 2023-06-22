@@ -4,20 +4,16 @@ import Nav from "./components/nav/Nav";
 import Videos from "./components/Videos/Videos";
 import {useEffect, useState} from "react";
 
-function App() {
+function App({youtubeAPI}) {
     const [videos, setVideos] = useState([]);
     useEffect(() => {
-        var requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-        };
-        fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&hl=ko&maxResults=25&key=${process.env.REACT_APP_YOUTUBE_KEY}`, requestOptions)
-            .then(response => response.json())
-            .then(res => setVideos(res.items));
+        youtubeAPI.getPopularVideoList()
+            .then(res => setVideos(res));
     }, []);
 
-    const onHandleChange = (items) => {
-        setVideos(items);
+    const onHandleChange = (words) => {
+        youtubeAPI.search(words)
+            .then(res => setVideos(res));
     };
 
   return (
