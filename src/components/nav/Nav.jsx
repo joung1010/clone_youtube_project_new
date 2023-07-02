@@ -30,7 +30,7 @@ function Nav() {
             <Link to='/'
                 className='nav-logo'>
                 <BsYoutube className='logo-brand'/>
-                <span className='logo-name'>Youtube</span>
+                <h1 className='logo-name'>Youtube</h1>
             </Link>
             <form className='nav-search' onSubmit={onSubmit}>
                 <input type="search" placeholder={`Search...`}

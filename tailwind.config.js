@@ -3,7 +3,10 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
     extend: {
-      fontWeight: ['hover', 'focus']
+      fontWeight: ['hover', 'focus'],
+      colors:{
+        brand:'#ff0000',
+      }
     },
   },
   plugins: [],
