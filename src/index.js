@@ -7,18 +7,21 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import NotFound from "./page/NotFound";
 import Videos from "./components/Videos/Videos";
 import VideoDetail from "./components/videoDetail/VideoDetail";
+import {YoutubeUtil} from "./service/youtubeUtil";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const youtubeAPI = new YoutubeUtil();
+
 const router = createBrowserRouter([
     { // root page
         path:'/',
-        element:<App/>,
+        element:<App youtubeAPI={youtubeAPI}/>,
         errorElement: <NotFound/>,
         children:[
             // index: true -> 인덱스가 최상위 / 인경우
             {index:true, element:<Videos/>},
             {path:'/videos', element:<Videos/>},
-            {path:'/videos:keyword', element:<Videos/>},
+            {path:'/videos/:keyword', element:<Videos/>},
             {path:'/videos/watch/:videoId', element:<VideoDetail/>},
         ]
 

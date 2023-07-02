@@ -3,7 +3,7 @@
 }
 
 .nav-logo {
-    @apply mx-4 text-2xl basis-1/3 items-center
+    @apply mx-4 text-2xl basis-1/3 items-center cursor-pointer
 }
 .logo-brand {
     @apply mr-1
