@@ -5,6 +5,7 @@ import Videos from "./components/Videos/Videos";
 import {useEffect, useState} from "react";
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import Root from "./components/Root";
+import VideoDetail from "./components/videoDetail/VideoDetail";
 
 const router = createBrowserRouter([{
     path : '/',
@@ -13,6 +14,9 @@ const router = createBrowserRouter([{
         {
             path:'/videos',
             element:<Videos/>
+        },{
+            path: 'videos/:videoId',
+            element:<VideoDetail/>
         }
     ]
 }]);
