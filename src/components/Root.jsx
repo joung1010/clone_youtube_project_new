@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Nav from "./nav/Nav";
-import Videos from "./Videos/Videos";
+import Videos from "../page/Videos/Videos";
 import {YoutubeUtil} from "../service/youtubeUtil";
 import {QueryClient, QueryClientProvider, useQuery,} from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'

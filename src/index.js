@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import NotFound from "./page/NotFound";
-import Videos from "./components/Videos/Videos";
-import VideoDetail from "./components/videoDetail/VideoDetail";
+import Videos from "./page/Videos/Videos";
+import VideoDetail from "./page/videoDetail/VideoDetail";
 import {YoutubeUtil} from "./service/youtubeUtil";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
