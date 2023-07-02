@@ -1,12 +1,13 @@
 .navbar {
-    @apply flex text-white max-w-7xl m-auto mt-3
+    @apply flex justify-between text-white max-w-7xl m-auto mt-3
 }
 
 .nav-logo {
-    @apply mx-4 text-2xl basis-1/3 items-center cursor-pointer
+    @apply flex justify-center text-2xl items-center cursor-pointer
 }
 .logo-brand {
-    @apply mr-1
+    color: #ff0000;
+    @apply text-5xl ml-2 mr-3
 }
 .nav-search {
     @apply w-8/12
@@ -16,4 +17,7 @@
 }
 .search-button {
     @apply  border-2 border-gray-300 h-9 w-9 align-top
+}
+.search-logo {
+    @apply m-auto
 }

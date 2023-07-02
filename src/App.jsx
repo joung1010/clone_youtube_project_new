@@ -1,15 +1,16 @@
 import './App.css';
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import {Outlet} from 'react-router-dom';
-import {YoutubeUtil} from "./service/youtubeUtil";
 import Nav from "./components/nav/Nav";
+import {YoutubeUtil} from "./service/youtubeUtil";
 
+const youtubeAPI = new YoutubeUtil();
 
-function App({youtubeAPI}) {
+function App() {
     return (
         <>
             <Nav/>
-            <Outlet/>
+            <Outlet context={{youtubeAPI}}/>
         </>
     );
 }

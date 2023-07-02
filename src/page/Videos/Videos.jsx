@@ -1,16 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams,useOutletContext} from 'react-router-dom';
 import Video from "../video/Video";
 import './videos.css';
+
 
 function Videos() {
     const [videos, setVideos] = useState([])
     const {keyword} = useParams();
+    const {youtubeAPI} = useOutletContext();
+
+    useEffect(() => {
+        if (keyword) {
+            youtubeAPI.search(keyword).then(res => setVideos(res));
+        } else {
+            youtubeAPI.getPopularVideoList()
+                .then(res => setVideos(res));
+        }
+    }, [keyword]);
+
     return (
         <main>
             <ul className='videos-list'>
-                {keyword}
-                {/* {
+                {
                     videos && videos.map(video => (
                         <li key={video.id} className='video-container'>
                             <Video
@@ -19,7 +30,7 @@ function Videos() {
                             />
                         </li>
                     ))
-                }*/}
+                }
             </ul>
         </main>
     );

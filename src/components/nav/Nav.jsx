@@ -1,28 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faYoutube} from '@fortawesome/free-brands-svg-icons'
+import {BsYoutube,BsSearch} from 'react-icons/bs'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
-import { useNavigate, useLocation} from 'react-router-dom';
+import {useNavigate, Link, useParams} from 'react-router-dom';
 import './nav.css'
 
 function Nav() {
     const [words, setWords] = useState('');
     const navigate = useNavigate();
-    const location = useLocation().pathname;
+    const {keyword} = useParams();
 
     useEffect(() => {
-       location && setWords(location.split('/')[2])
-    }, []);
+        setWords(keyword || '');
+    }, [keyword]);
 
 
     const onHandleChange = (e) => {
         setWords(e.target.value);
-    };
-
-    const onHandleClick = (e) => {
-        setWords('');
-        navigate(`/`);
-
     };
 
     const onSubmit = (e) => {
@@ -33,18 +27,20 @@ function Nav() {
 
     return (
         <nav className='navbar'>
-            <div className='nav-logo' onClick={(e) => onHandleClick(e)}>
-                <FontAwesomeIcon icon={faYoutube} className='logo-brand' style={{color: "#f40606",}}/>
+            <Link to='/'
+                className='nav-logo'>
+                <BsYoutube className='logo-brand'/>
                 <span className='logo-name'>Youtube</span>
-            </div>
+            </Link>
             <form className='nav-search' onSubmit={onSubmit}>
                 <input type="search" placeholder={`Search...`}
-                       onChange={(e)=> onHandleChange(e)}
-                        value={words}
+                       onChange={(e) => onHandleChange(e)}
+                       value={words}
                        className='search-input'
                 />
                 <button className='search-button'>
-                    <FontAwesomeIcon icon={faSearch} className='search-logo'/>
+                    {/*<FontAwesomeIcon icon={faSearch} className='search-logo'/>*/}
+                    <BsSearch className='search-logo'/>
                 </button>
             </form>
         </nav>
