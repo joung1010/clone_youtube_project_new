@@ -1,30 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-import Nav from "./components/nav/Nav";
-import Videos from "./components/Videos/Videos";
-import {useEffect, useState} from "react";
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import Root from "./components/Root";
-import VideoDetail from "./components/videoDetail/VideoDetail";
-
-const router = createBrowserRouter([{
-    path : '/',
-    element: <Root/>,
-    children:[
-        {
-            path:'/videos',
-            element:<Videos/>
-        },{
-            path: 'videos/:videoId',
-            element:<VideoDetail/>
-        }
-    ]
-}]);
+import React, {useEffect, useState} from "react";
+import {Outlet} from 'react-router-dom';
+import {YoutubeUtil} from "./service/youtubeUtil";
 
 
-function App({youtubeAPI}) {
+const youtubeAPI = new YoutubeUtil();
+
+function App() {
   return (
-      <RouterProvider router={router}/>
+      <>
+        <Outlet/>
+      </>
   );
 }
 export default App;

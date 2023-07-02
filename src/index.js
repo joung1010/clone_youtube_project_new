@@ -3,13 +3,32 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import NotFound from "./page/NotFound";
+import Videos from "./components/Videos/Videos";
+import VideoDetail from "./components/videoDetail/VideoDetail";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const router = createBrowserRouter([
+    { // root page
+        path:'/',
+        element:<App/>,
+        errorElement: <NotFound/>,
+        children:[
+            // index: true -> 인덱스가 최상위 / 인경우
+            {index:true, element:<Videos/>},
+            {path:'/videos', element:<Videos/>},
+            {path:'/videos:keyword', element:<Videos/>},
+            {path:'/videos/watch/:videoId', element:<VideoDetail/>},
+        ]
 
+    },
+
+]);
 
 root.render(
   <React.StrictMode>
-    <App/>
+      <RouterProvider router={router}/>
   </React.StrictMode>
 );
 
