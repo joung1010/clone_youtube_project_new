@@ -3,25 +3,24 @@ import './App.css';
 import Nav from "./components/nav/Nav";
 import Videos from "./components/Videos/Videos";
 import {useEffect, useState} from "react";
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import Root from "./components/Root";
+
+const router = createBrowserRouter([{
+    path : '/',
+    element: <Root/>,
+    children:[
+        {
+            path:'/videos',
+            element:<Videos/>
+        }
+    ]
+}]);
+
 
 function App({youtubeAPI}) {
-    const [videos, setVideos] = useState([]);
-    useEffect(() => {
-        youtubeAPI.getPopularVideoList()
-            .then(res => setVideos(res));
-    }, []);
-
-    const onHandleChange = (words) => {
-        youtubeAPI.search(words)
-            .then(res => setVideos(res));
-    };
-
   return (
-      <>
-        <Nav onHandleChange={onHandleChange}/>
-        <Videos videos={videos}/>
-      </>
+      <RouterProvider router={router}/>
   );
 }
-
 export default App;

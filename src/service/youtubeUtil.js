@@ -8,6 +8,7 @@ export   class YoutubeUtil {
     }
 
      async getPopularVideoList() {
+         console.log('통신!');
        const response = await fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&hl=ko&maxResults=25&key=${this.API_KEY}`, this.requestOptions);
        const res = await response.json();
          return res.items;

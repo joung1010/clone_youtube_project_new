@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react';
 import Video from "../video/Video";
 import './videos.css';
 
-function Videos({videos}) {
-
+function Videos({onHandleChange,videos, youtubeAPI}) {
+    useEffect(() => {
+        youtubeAPI.getPopularVideoList()
+            .then(res => onHandleChange(res));
+    }, []);
 
     return (
         <main>

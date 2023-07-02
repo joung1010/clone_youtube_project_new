@@ -4,10 +4,11 @@ import {faYoutube} from '@fortawesome/free-brands-svg-icons'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import './nav.css'
 
-function Nav({ onHandleChange}) {
+function Nav({ onHandleChange,youtubeAPI}) {
     const [words, setWords] = useState('');
     const updateVideos = (words) => {
-        onHandleChange(words);
+        youtubeAPI.search(words)
+            .then(res => onHandleChange(res));
     }
 
     const onSubmit = (e) => {
