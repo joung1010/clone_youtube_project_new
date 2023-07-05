@@ -3,6 +3,7 @@ import {useParams, useOutletContext} from 'react-router-dom';
 import Video from "../video/Video";
 import './videos.css';
 import {useQuery} from "@tanstack/react-query";
+import axios from "axios";
 
 
 function Videos() {
@@ -12,11 +13,9 @@ function Videos() {
     const {isLoading, error, data: videos} = useQuery(
         ['videos', keyword],
         async () => {
-            if (!keyword) {
-                return await youtubeAPI.getPopularVideoList();
-            } else {
-                return await youtubeAPI.search(keyword);
-            }
+            return axios
+                .get(`/videos/${keyword ? 'search' : 'popular'}.json`)
+                .then((res) => res.data.items);
         }, {
             staleTime: 1000 * 60 * 5,
         }
