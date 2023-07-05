@@ -2,10 +2,12 @@ import './App.css';
 import React, {useEffect, useState} from "react";
 import {Outlet} from 'react-router-dom';
 import Nav from "./components/nav/Nav";
-import {YoutubeUtil} from "./service/youtubeUtil";
 import {QueryClient, QueryClientProvider,} from '@tanstack/react-query'
+import Youtube from "./service/api/youtube";
+import TestYoutube from "./service/api/testYoutube";
 
-const youtubeAPI = new YoutubeUtil();
+const youtube = new Youtube();
+// const youtube =new TestYoutube();
 const queryClient = new QueryClient();
 
 function App() {
@@ -13,7 +15,7 @@ function App() {
         <>
             <Nav/>
             <QueryClientProvider client={queryClient}>
-                <Outlet context={{youtubeAPI}}/>
+                <Outlet context={{youtube}}/>
             </QueryClientProvider>
         </>
     );
