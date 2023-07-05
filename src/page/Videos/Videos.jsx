@@ -1,37 +1,43 @@
 import React, {useEffect, useState} from 'react';
-import {useParams,useOutletContext} from 'react-router-dom';
+import {useParams, useOutletContext} from 'react-router-dom';
 import Video from "../video/Video";
 import './videos.css';
+import {useQuery} from "@tanstack/react-query";
 
 
 function Videos() {
-    const [videos, setVideos] = useState([])
-    const {keyword} = useParams();
+    // const [videos, setVideos] = useState([])
+    const {keyword} = useParams()
     const {youtubeAPI} = useOutletContext();
-
-    useEffect(() => {
-        if (keyword) {
-            youtubeAPI.search(keyword).then(res => setVideos(res));
-        } else {
-            youtubeAPI.getPopularVideoList()
-                .then(res => setVideos(res));
+    const {isLoading, error, data: videos} = useQuery(
+        ['videos', keyword],
+        async () => {
+            if (!keyword) {
+                return await youtubeAPI.getPopularVideoList();
+            } else {
+                return await youtubeAPI.search(keyword);
+            }
+        }, {
+            staleTime: 1000 * 60 * 5,
         }
-    }, [keyword]);
+    );
 
     return (
         <main>
+            {isLoading && <p>Loading...</p>}
+            {error && <p>Someting is Wrong</p>}
+            {videos &&
             <ul className='videos-list'>
                 {
                     videos && videos.map(video => (
-                        <li key={video.id} className='video-container'>
-                            <Video
-                                id={video.id}
-                                snippet={video.snippet}
-                            />
-                        </li>
+                        <Video
+                            id={video.id}
+                            videos={video}
+                        />
                     ))
                 }
             </ul>
+            }
         </main>
     );
 }

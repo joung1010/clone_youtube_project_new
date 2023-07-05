@@ -1,3 +1,7 @@
+.video-container {
+    @apply w-1/4 mb-2 p-2 cursor-pointer
+}
+
 .video {
     @apply text-white
 }
@@ -12,6 +16,9 @@
 }
 
 @media (max-width: 1024px) {
+    .video-container {
+        @apply w-full
+    }
     .video {
         @apply text-center
     }
