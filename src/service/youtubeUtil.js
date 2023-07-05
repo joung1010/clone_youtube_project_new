@@ -28,6 +28,7 @@ export class YoutubeUtil {
             params: {
                 part: 'snippet',
                 maxResults: 25,
+                type:'video',
                 q,
                 key: this.API_KEY
             }

@@ -2,8 +2,12 @@ import axios from "axios";
 
 export default class Youtube {
     constructor() {
-        this.API_KEY = process.env.REACT_APP_YOUTUBE_KEY;
-        this.API_URL = 'https://youtube.googleapis.com/youtube/v3';
+        this.httpClient = axios.create({
+            baseURL: 'https://youtube.googleapis.com/youtube/v3/',
+            params: {
+                key: process.env.REACT_APP_YOUTUBE_KEY
+            }
+        });
     }
 
     async search(keyword) {
@@ -11,13 +15,13 @@ export default class Youtube {
     };
 
     async #searchByKeyword(keyword) {
-        return axios
-            .get(`${this.API_URL}/search`, {
+        return this.httpClient
+            .get('search', {
                 params: {
                     part: 'snippet',
                     maxResults: 25,
+                    type:'video',
                     q: keyword,
-                    key: this.API_KEY
                 }
             })
             .then((res) => res.data.items)
@@ -25,14 +29,13 @@ export default class Youtube {
     }
 
     async #mostPopular() {
-        return axios
-            .get(`${this.API_URL}/videos`, {
+        return this.httpClient
+            .get('videos', {
                 params: {
                     part: 'snippet',
                     chart: 'mostPopular',
                     hl: 'ko',
                     maxResults: 25,
-                    key: this.API_KEY,
                 }
             })
             .then((res) => res.data.items);
