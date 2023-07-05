@@ -4,10 +4,6 @@ export class YoutubeUtil {
     constructor() {
         this.API_KEY = process.env.REACT_APP_YOUTUBE_KEY;
         this.API_URL = 'https://youtube.googleapis.com/youtube/v3';
-        this.requestOptions = {
-            method: 'GET',
-            redirect: 'follow'
-        };
     }
 
     //https://github.com/axios/axios
@@ -35,7 +31,8 @@ export class YoutubeUtil {
                 q,
                 key: this.API_KEY
             }
-        }).then(res => ({...res.data.items, id: res.data.items.id.channelId}));
+        }).then(res => res.data.items)
+            .then(items => items.map(item => ({...item,id:item.id.videoId})));
 
 /*        const response = await fetch(`?&q=${q}&key=${this.API_KEY}`, this.requestOptions);
         const res = await response.json();
