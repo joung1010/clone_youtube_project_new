@@ -8366,6 +8366,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jquery@npm:>=1.5.0 <4.0":
+  version: 3.7.0
+  resolution: "jquery@npm:3.7.0"
+  checksum: 907785e133afc427650a131af5fccef66a404885037513b3d4d7d63aee6409bcc32a39836868c60e59b05aa0fb8ace8961c18b2ee3ffdf6ffdb571d6d7cd88ff
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -12375,6 +12382,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"timeago.js@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "timeago.js@npm:4.0.2"
+  checksum: c785a06988717cb5a00bb96b00ebaa56e83f4b5ed5d87c4c3931fb1bb2591a0e13a7ddc4b6c12c6ee7de64b440ed903c7bd4e0edddb37aade9bfc9ceab5d0db3
+  languageName: node
+  linkType: hard
+
+"timeago@npm:^1.6.7":
+  version: 1.6.7
+  resolution: "timeago@npm:1.6.7"
+  dependencies:
+    jquery: ">=1.5.0 <4.0"
+  checksum: 9bc19da8a236879fa9cc945cc5a9386ad1f0b60361b166363a2e81494457ee4521f5cb2768ca2d25f2ecfde8bffc0e0af00d941ef4a3c9885d1430d4198ffec2
+  languageName: node
+  linkType: hard
+
 "tmpl@npm:1.0.5":
   version: 1.0.5
   resolution: "tmpl@npm:1.0.5"
@@ -13485,6 +13508,8 @@ __metadata:
     react-router-dom: ^6.12.1
     react-scripts: 5.0.1
     tailwindcss: ^3.3.2
+    timeago: ^1.6.7
+    timeago.js: ^4.0.2
     web-vitals: ^2.1.0
   languageName: unknown
   linkType: soft
