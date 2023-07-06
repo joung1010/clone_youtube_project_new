@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {useParams,useOutletContext} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import Video from "../video/Video";
 import './videos.css';
 import {useQuery} from "@tanstack/react-query";
+import {useYoutubeApi} from "../../context/YoutubeApiContext";
 
 
 function Videos() {
-    const {youtube} = useOutletContext();
+    // const {youtube} = useOutletContext();
+    const {youtube} = useYoutubeApi();
     const {keyword} = useParams()
     const {isLoading, error, data: videos} = useQuery(
         ['videos', keyword], () => {
