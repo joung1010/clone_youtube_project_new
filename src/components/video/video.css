@@ -2,9 +2,6 @@
     @apply w-1/4 mb-2 p-2 cursor-pointer
 }
 
-.video {
-    @apply text-white
-}
 .video-img {
     @apply h-40 w-full m-0
 }
@@ -15,7 +12,7 @@
     @apply text-sm
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 724px) {
     .video-container {
         @apply w-full
     }
