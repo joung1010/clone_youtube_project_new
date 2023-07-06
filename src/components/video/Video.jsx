@@ -5,7 +5,7 @@ import {formatAgo} from "../../util/date";
 function Video({id, videos: {snippet}}) {
     const {title, thumbnails, channelTitle, publishedAt} = snippet;
     return (
-        <li key={id} className='video-container'>
+        <li key={id} >
             <img className='video-img' src={thumbnails.medium.url} alt={title}/>
             <div>
                 <p className='video-title'>{title}</p>

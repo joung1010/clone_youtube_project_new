@@ -1,31 +1,12 @@
-.video-container {
-    @apply w-1/4 mb-2 p-2 cursor-pointer
-}
-
 .video-img {
-    @apply h-40 w-full m-0
+    @apply w-full;
 }
 .video-title {
-  @apply text-base
+    @apply font-semibold my-2 line-clamp-2;
 }
-.video-channel,.video-upload {
-    @apply text-sm
+.video-channel {
+    @apply text-sm opacity-80 ;
 }
-
-@media (max-width: 724px) {
-    .video-container {
-        @apply w-full
-    }
-    .video {
-        @apply text-center
-    }
-    .video-img {
-        @apply w-10/12 m-auto h-72
-    }
-    .video-title {
-        @apply text-lg
-    }
-    .video-channel,.video-upload {
-        @apply text-base
-    }
+.video-upload {
+    @apply text-sm opacity-80;
 }
