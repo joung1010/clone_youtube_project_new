@@ -7,6 +7,10 @@ export default class Youtube {
         return keyword ? this.#searchByKeyword(keyword) : this.#mostPopular()
     };
 
+    async channel(id) {
+        return this.#channelDetail(id);
+    }
+
     async #searchByKeyword(keyword) {
         return this.apiClient.search( {
             params: {
@@ -27,6 +31,16 @@ export default class Youtube {
                 chart: 'mostPopular',
                 hl: 'ko',
                 maxResults: 25,
+            }
+        })
+            .then((res) => res.data.items);
+    }
+
+    async #channelDetail(id) {
+        return this.apiClient.channel({
+            params:{
+                part: 'snippet',
+                id,
             }
         })
             .then((res) => res.data.items);
