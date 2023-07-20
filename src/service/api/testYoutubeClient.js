@@ -16,4 +16,8 @@ export default class TestYoutubeClient {
         return axios.get(`/videos/channel.json`);
     }
 
+    async related() {
+        return axios.get(`/videos/related.json`);
+    }
+
 }

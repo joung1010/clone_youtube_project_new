@@ -11,6 +11,11 @@ export default class Youtube {
         return this.#channelDetail(id);
     }
 
+    async related(id) {
+        return this.#searchByChannelId(id);
+    }
+
+
     async #searchByKeyword(keyword) {
         return this.apiClient.search( {
             params: {
@@ -43,6 +48,18 @@ export default class Youtube {
                 id,
             }
         })
-            .then((res) => res.data.items);
+            .then((res) => res.data.items[0]);
+    }
+
+    async #searchByChannelId(channelId) {
+        return this.apiClient.related({
+            params:{
+                part: 'snippet',
+                channelId,
+                type:'video',
+            }
+        })
+            .then((res) => res.data.items)
+            .then(items => items.map(item => ({...item, id: item.id.videoId})));
     }
 }
