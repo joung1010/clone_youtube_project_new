@@ -25,37 +25,35 @@ function VideoDetail(props) {
             staleTime: 1000 * 60 * 5,
         }
     );
-    console.log(channel);
     return (
-        <div>
+        <div className="flex">
             {isLoading && <p>Loading...</p>}
             {error && <p>Someting is Wrong</p>}
             {channel &&
-            <div>
-                <div>
-                    <iframe
-                        className='video-item'
-                        src={`https://www.youtube.com/embed/${videoId}`}
-                    />
-                    <p>{state.title}</p>
-                    <div>
-                        <img src={channel.snippet.thumbnails.medium.url} alt={channel.snippet.title}/>
-                        <p></p>
-                    </div>
-                    <p>{state.description}</p>
+            <div className="flex-auto w-64 mr-2">
+                <iframe
+                    className='w-full h-96'
+                    src={`https://www.youtube.com/embed/${videoId}`}
+                />
+                <p className="my-5">{state.title}</p>
+                <div className="flex my-4">
+                    <img src={channel.snippet.thumbnails.medium.url} alt={channel.snippet.title}/>
+                    <p className="mx-1">{channel.snippet.title}</p>
                 </div>
+                <p>{state.description}</p>
             </div>
             }
-            <ul>
-            {
-                related && related.map(video =>(
-                    <Video
-                        id={video.id}
-                        videos={video}
-                    />
-                ))
+            <ul className="flex-auto w-24">
+                {
+                    related && related.map(video => (
+                        <Video
+                            id={video.id}
+                            videos={video}
+                            isSide={true}
+                        />
+                    ))
 
-            }
+                }
             </ul>
         </div>
     );

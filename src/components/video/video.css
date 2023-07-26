@@ -1,5 +1,13 @@
+.video-side {
+    @apply flex;
+}
+
 .video-img {
     @apply w-full;
+}
+
+.video-img__side {
+    @apply w-2/5 mr-2;
 }
 .video-title {
     @apply font-semibold my-2 line-clamp-2;

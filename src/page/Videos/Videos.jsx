@@ -30,6 +30,7 @@ function Videos() {
                         <Video
                             id={video.id}
                             videos={video}
+                            isSide={false}
                         />
                     ))
                 }
