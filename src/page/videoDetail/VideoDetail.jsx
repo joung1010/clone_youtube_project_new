@@ -3,21 +3,14 @@ import {useLocation, useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import {useYoutubeApi} from "../../context/YoutubeApiContext";
 import Video from "../../components/video/Video";
+import ChannelInfo from "../../components/channelInfo/ChannelInfo";
 
 function VideoDetail(props) {
     const {videoId} = useParams();
     const {state} = useLocation();
     const {youtube} = useYoutubeApi();
-    console.log(state);
-    const {isLoading, error, data: channel} = useQuery(
-        [state.channelId], () => {
-            return youtube.channel(state.channelId);
-        }
-        , {
-            staleTime: 1000 * 60 * 5,
-        }
-    );
-    const {isLoading: relatedLoading, data: related} = useQuery(['related', state.channelId],
+    const {channelId,title,description,channelTitle} = state;
+    const {isLoading, error, data: related} = useQuery(['related', state.channelId],
         () => {
             return youtube.related(state.channelId);
         },
@@ -26,25 +19,22 @@ function VideoDetail(props) {
         }
     );
     return (
-        <div className="flex">
+        <section className="flex">
             {isLoading && <p>Loading...</p>}
             {error && <p>Someting is Wrong</p>}
-            {channel &&
-            <div className="flex-auto w-64 mr-2">
+            <article className="flex-auto w-64 mr-2">
                 <iframe
                     className='w-full h-96'
                     src={`https://www.youtube.com/embed/${videoId}`}
                 />
-                <p className="my-5">{state.title}</p>
-                <div className="flex items-center my-4">
-                    <img src={channel.snippet.thumbnails.medium.url} alt={channel.snippet.title}
-                    className="rounded-full w-12 h-12"
+                <div>
+                    <p>{title}</p>
+                    <ChannelInfo channelId={channelId}
+                                 name={channelTitle}
                     />
-                    <p className="mx-1">{channel.snippet.title}</p>
+                    <pre>{description}</pre>
                 </div>
-                <p>{state.description}</p>
-            </div>
-            }
+            </article>
             <ul className="flex-auto w-24">
                 {
                     related && related.map(video => (
@@ -57,7 +47,7 @@ function VideoDetail(props) {
 
                 }
             </ul>
-        </div>
+        </section>
     );
 }
 
