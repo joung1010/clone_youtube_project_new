@@ -4,6 +4,7 @@ import {useQuery} from "@tanstack/react-query";
 import {useYoutubeApi} from "../../context/YoutubeApiContext";
 import Video from "../../components/video/Video";
 import ChannelInfo from "../../components/channelInfo/ChannelInfo";
+import RelatedVideo from "../../components/relatedVideo/RelatedVideo";
 
 function VideoDetail(props) {
     const {videoId} = useParams();
@@ -35,7 +36,8 @@ function VideoDetail(props) {
                     <pre>{description}</pre>
                 </div>
             </article>
-            <ul className="flex-auto w-24">
+                <RelatedVideo id={videoId}/>
+{/*            <ul className="flex-auto w-24">
                 {
                     related && related.map(video => (
                         <Video
@@ -46,7 +48,7 @@ function VideoDetail(props) {
                     ))
 
                 }
-            </ul>
+            </ul>*/}
         </section>
     );
 }
