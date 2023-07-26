@@ -36,8 +36,10 @@ function VideoDetail(props) {
                     src={`https://www.youtube.com/embed/${videoId}`}
                 />
                 <p className="my-5">{state.title}</p>
-                <div className="flex my-4">
-                    <img src={channel.snippet.thumbnails.medium.url} alt={channel.snippet.title}/>
+                <div className="flex items-center my-4">
+                    <img src={channel.snippet.thumbnails.medium.url} alt={channel.snippet.title}
+                    className="rounded-full w-12 h-12"
+                    />
                     <p className="mx-1">{channel.snippet.title}</p>
                 </div>
                 <p>{state.description}</p>

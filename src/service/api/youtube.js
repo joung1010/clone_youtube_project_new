@@ -57,6 +57,7 @@ export default class Youtube {
                 part: 'snippet',
                 channelId,
                 type:'video',
+                maxResults:'25',
             }
         })
             .then((res) => res.data.items)
