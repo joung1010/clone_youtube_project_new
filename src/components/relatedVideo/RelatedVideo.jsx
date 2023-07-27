@@ -23,7 +23,6 @@ function RelatedVideo({id}) {
                         <Video
                             id={video.id}
                             videos={video}
-                            isSide={false}
                         />
                     ))
                 }

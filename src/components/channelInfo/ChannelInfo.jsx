@@ -12,13 +12,13 @@ function ChannelInfo({channelId, name }) {
         }
     );
     return (
-        <div className="flex items-center my-4">
+        <div className="flex items-center my-4 mb-8">
             {channelImageUrl &&
             <img src={channelImageUrl} alt={name}
                  className="rounded-full w-12 h-12"
             />
             }
-            <p className="mx-1">{name}</p>
+            <p className="mx-1 text-lg font-medium">{name}</p>
         </div>
     );
 }

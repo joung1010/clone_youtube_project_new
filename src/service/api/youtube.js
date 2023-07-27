@@ -47,7 +47,7 @@ export default class Youtube {
                 id,
             }
         })
-            .then((res) => res.data.items[0]);
+            .then((res) => res.data.items[0].snippet.thumbnails.default.url);
     }
 
     async #searchByChannelId(channelId) {
