@@ -2,21 +2,22 @@ import React from 'react';
 import {useQuery} from "@tanstack/react-query";
 import {useYoutubeApi} from "../../context/YoutubeApiContext";
 
-function ChannelInfo({channelId, name, description}) {
+function ChannelInfo({channelId, name }) {
     const {youtube} = useYoutubeApi();
-    const {isLoading, error, data: channel} = useQuery(
-        [channelId], () => {
-            return youtube.channel(channelId);
-        }
+    const {isLoading, error, data: channelImageUrl} = useQuery(
+        ['channel',channelId], () => youtube.channelImageUrl(channelId)
+
         , {
             staleTime: 1000 * 60 * 5,
         }
     );
     return (
         <div className="flex items-center my-4">
-            <img src={channel.snippet.thumbnails.medium.url} alt={channel.snippet.title}
+            {channelImageUrl &&
+            <img src={channelImageUrl} alt={name}
                  className="rounded-full w-12 h-12"
             />
+            }
             <p className="mx-1">{name}</p>
         </div>
     );

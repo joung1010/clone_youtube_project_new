@@ -7,8 +7,8 @@ export default class Youtube {
         return keyword ? this.#searchByKeyword(keyword) : this.#mostPopular()
     };
 
-    async channel(id) {
-        return this.#channelDetail(id);
+    async channelImageUrl(id) {
+        return this.#getChannelImgUrl(id);
     }
 
     async related(id) {
@@ -41,7 +41,7 @@ export default class Youtube {
             .then((res) => res.data.items);
     }
 
-    async #channelDetail(id) {
+    async #getChannelImgUrl(id) {
         return this.apiClient.channel({
             params:{
                 part: 'snippet',
