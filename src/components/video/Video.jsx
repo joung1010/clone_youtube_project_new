@@ -6,9 +6,7 @@ import {useNavigate} from "react-router-dom";
 function Video({id, videos: {snippet},type}) {
     const {title, thumbnails, channelTitle, publishedAt} = snippet;
     const navigate = useNavigate();
-    console.log(type);
     const isList = type === 'list';
-    console.log(isList);
     const handleOnclick = (e) => {
         e.preventDefault();
         navigate(`/videos/watch/${id}`,{state: snippet});

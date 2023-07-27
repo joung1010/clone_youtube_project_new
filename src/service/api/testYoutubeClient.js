@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export default class TestYoutubeClient {
-    constructor() {
-    }
+
 
     async search({params}) {
         return params.channelId ? axios.get(`/videos/related.json`) : axios.get(`/videos/search.json`);

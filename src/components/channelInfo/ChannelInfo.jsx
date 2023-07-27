@@ -4,7 +4,7 @@ import {useYoutubeApi} from "../../context/YoutubeApiContext";
 
 function ChannelInfo({channelId, name }) {
     const {youtube} = useYoutubeApi();
-    const {isLoading, error, data: channelImageUrl} = useQuery(
+    const { data: channelImageUrl} = useQuery(
         ['channel',channelId], () => youtube.channelImageUrl(channelId)
 
         , {
