@@ -23,6 +23,7 @@ function RelatedVideo({id}) {
                         <Video
                             id={video.id}
                             videos={video}
+                            type='list'
                         />
                     ))
                 }
