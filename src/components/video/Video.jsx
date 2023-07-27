@@ -12,10 +12,10 @@ function Video({id, videos: {snippet},type}) {
         navigate(`/videos/watch/${id}`,{state: snippet});
     };
     return (
-        <li className={isList ? 'flex gap-1 m-2' : ''}
+        <li className={isList ? 'flex gap-1 m-2 sm:flex-col' : ''}
             key={id}
             onClick={handleOnclick}>
-            <img className={isList ? 'w-32 mr-2' : 'video-img'} src={thumbnails.medium.url} alt={title}/>
+            <img className={isList ? 'w-32 mr-2 sm:w-full h-70' : 'video-img'} src={thumbnails.medium.url} alt={title}/>
             <div >
                 <p className='video-title'>{title}</p>
                 <p className='video-channel'>{channelTitle}</p>
