@@ -36,19 +36,7 @@ function VideoDetail(props) {
                     <pre>{description}</pre>
                 </div>
             </article>
-                <RelatedVideo id={videoId}/>
-{/*            <ul className="flex-auto w-24">
-                {
-                    related && related.map(video => (
-                        <Video
-                            id={video.id}
-                            videos={video}
-                            isSide={true}
-                        />
-                    ))
-
-                }
-            </ul>*/}
+                <RelatedVideo id={channelId}/>
         </section>
     );
 }
